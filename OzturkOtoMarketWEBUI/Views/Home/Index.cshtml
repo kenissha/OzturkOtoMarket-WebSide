@@ -1,0 +1,35 @@
+﻿@using OzturkOtoMarketWEBUI.Entity;
+@model  IEnumerable<Product>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="jumbg">
+
+    <div class="container-md">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">ÖZTÜRK OTO MARKET</h1>
+            <p class="col-md-8 fs-4">40 Yıllık tecrübe ile servis ve parça bakımı.</p>
+            <button class="btn btn-primary btn-lg" type="button">Daha fazla için.</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="container-sm">
+    @Html.Partial("_ProductList",Model)
+
+
+</div>
+
+
+
+
