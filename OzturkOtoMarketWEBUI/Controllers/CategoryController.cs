@@ -10,6 +10,9 @@ using OzturkOtoMarketWEBUI.Entity;
 
 namespace OzturkOtoMarketWEBUI.Controllers
 {
+
+
+    [Authorize(Roles ="admin")]
     public class CategoryController : Controller
     {
         private DataContext db = new DataContext();
