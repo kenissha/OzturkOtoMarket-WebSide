@@ -68,10 +68,19 @@
                         </div>
                         <div id="buttonn">
                             <div class="col-md-12 mt-3">
-                                <button class="btn btn-success">
+
+                                @using (Html.BeginForm("AddToCart","Cart"))
+                                {
+                                    @Html.HiddenFor(i=>i.Id)
+                                    <button type="submit" class="btn btn-success">
                                     <i class="fa-solid fa-cart-plus"></i>
                                     Sepete Ekle
-                                </button>
+
+                                </button >
+                                                     }
+
+
+
                             </div>
 
                         </div>

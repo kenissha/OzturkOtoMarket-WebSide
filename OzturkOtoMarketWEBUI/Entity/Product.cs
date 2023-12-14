@@ -14,7 +14,7 @@ namespace OzturkOtoMarketWEBUI.Entity
         [DisplayName("Ürün Açıklaması")]
         public string Description { get; set;}
         [DisplayName("Ürün Fiyatı")]
-        public string Price { get; set; }
+        public double Price { get; set; }
         [DisplayName("Ürünün Stok Adeti")]
         public int Stock { get; set; }
         [DisplayName("Ürünün Fotoğrafı")]
