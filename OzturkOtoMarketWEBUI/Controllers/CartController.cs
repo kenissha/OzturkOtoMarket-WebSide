@@ -101,7 +101,8 @@ namespace OzturkOtoMarketWEBUI.Controllers
             order.OrderNumber= "K" + (new Random()).Next(11111,99999).ToString();
             order.Total = cart.Total();
             order.OrderDate= DateTime.Now;
-            order.UserName= User.Identity.Name;
+            order.OrderState = EnumOrderState.Waiting;
+            order.UserName=User.Identity.Name;
             order.AdresBasligi= entity.AdresBasligi;
             order.Adres= entity.Adres;
             order.Sehir= entity.Sehir;
