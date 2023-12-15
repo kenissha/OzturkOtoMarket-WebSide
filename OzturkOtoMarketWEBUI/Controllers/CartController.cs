@@ -57,5 +57,74 @@ namespace OzturkOtoMarketWEBUI.Controllers
         {
             return PartialView(GetCart());
         }
+
+
+        public ActionResult CheckOut()
+        {
+            return View(new ShippingDetails());
+        }
+
+
+        [HttpPost]
+        public ActionResult CheckOut(ShippingDetails entity)
+        {
+
+            var cart=GetCart();
+            if(cart.CartLines.Count==0) 
+            {
+                ModelState.AddModelError("UrunYokError", "Sepetinizde ürün bulunmamaktır.");
+            }
+            
+            
+            if(ModelState.IsValid) 
+            {
+
+                SaveOrder(cart, entity);
+                cart.Clear();
+                return View("Completed");
+            }
+            else 
+            {
+                return View(entity);
+
+            }
+            
+
+
+           
+        }
+
+        private void SaveOrder(Cart cart, ShippingDetails entity)
+        {
+           var order = new Order();
+
+            order.OrderNumber= "K" + (new Random()).Next(11111,99999).ToString();
+            order.Total = cart.Total();
+            order.OrderDate= DateTime.Now;
+            order.UserName= entity.Username;
+            order.AdresBasligi= entity.AdresBasligi;
+            order.Adres= entity.Adres;
+            order.Sehir= entity.Sehir;
+            order.Semt= entity.Semt;
+            order.Mahalle= entity.Mahalle;
+            order.PostaKodu= entity.PostaKodu;
+
+            order.Orderlines=new List<OrderLine>();
+            foreach(var pr in cart.CartLines)
+            {
+                var orderline = new OrderLine();
+                orderline.Qunatity= pr.Quantity;
+                orderline.Price= pr.Quantity * pr.Product.Price;
+                orderline.ProductId= pr.Product.Id;
+
+
+                order.Orderlines.Add(orderline);
+
+
+            }
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+        }
     }
 }
