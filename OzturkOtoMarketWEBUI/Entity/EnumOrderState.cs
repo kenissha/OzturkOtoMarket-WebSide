@@ -8,8 +8,9 @@ namespace OzturkOtoMarketWEBUI.Entity
 {
     public enum EnumOrderState
     {
-        
+        [Display(Name ="Onay Bekleniyor")]
         Waiting,
+        [Display(Name = "Sipariş Tamamlandı")]
         Completed
     }
 }
