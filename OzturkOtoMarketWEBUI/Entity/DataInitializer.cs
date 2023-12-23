@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
+using OzturkOtoMarketWEBUI.identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -33,7 +36,7 @@ namespace OzturkOtoMarketWEBUI.Entity
             {
                 new Product() { Name ="Tofaş SLX Ön Balata", Description = "Orijinal Tofaş DOĞAN, Kartal Ön Balata", Price =400, Stock = 10, IsApproved =true, CategoryId =1, Image="10.jpg" },
                 new Product() { Name ="Tofaş Arka Balata", Description = "Orijinal Tofaş DOĞAN, Kartal Arka Balata", Price =300, Stock = 10, IsApproved =false, CategoryId =1,Image="20.png"},
-                new Product() { Name ="Renault 9 Ön Balata", Description = "Orijinal Reno 9 Ön Balata", Price =450, Stock = 10, IsApproved =true, CategoryId =1,Image="030.png"},
+                new Product() { Name ="Renault 9 Ön Balata", Description = "Orijinal Reno 9 Ön Balata", Price =450, Stock = 10, IsApproved =true, CategoryId =1,Image="reno.png"},
 
                 new Product() { Name ="6 PK 1750 Kayış", Description = "OTK Marka 6PK1750 Kayış", Price =700, Stock = 8, IsApproved =true, CategoryId =2,Image="40.jpg",},
                 new Product() { Name ="5 PK 1400 Kayış", Description = "MTK Marka 5PK1400 Kayış", Price =600, Stock = 4, IsApproved =true, CategoryId =2,Image="50.jpg"},
@@ -43,7 +46,7 @@ namespace OzturkOtoMarketWEBUI.Entity
                 new Product() { Name ="Reno Yağ Filtresi", Description = "Orijinal Reno Yağ Filtresi", Price =350, Stock = 40, IsApproved =true, CategoryId =3,Image="80.jpg"},
                 new Product() { Name ="Pejo Yağ Filtresi", Description = "Orijinal Pejo Yağ Filtresi", Price =400, Stock = 50, IsApproved =false, CategoryId =3,Image="90.jpg" },
 
-                new Product() { Name ="Tofaş Hava Filtresi", Description = "Orijinal Tofaş Hava Filtresi", Price =200, Stock = 10, IsApproved =true, CategoryId =4,Image="0100.jpg" },
+                new Product() { Name ="Tofaş Hava Filtresi", Description = "Orijinal Tofaş Hava Filtresi", Price =200, Stock = 10, IsApproved =true, CategoryId =4,Image="tofas.jpg" },
                 new Product() { Name ="Reno Hava Filtresi", Description = "Orijinal Reno Hava Filtresi", Price =300, Stock = 10, IsApproved =true, CategoryId =4,Image="110.jpg" },
                 new Product() { Name ="Pejo Hava Filtresi", Description = "Orijinal Pejo Hava Filtresi", Price =500, Stock = 10, IsApproved =true, CategoryId =4,Image="120.jpg" },
 
@@ -71,9 +74,54 @@ namespace OzturkOtoMarketWEBUI.Entity
 
 
 
+            if (!context.Roles.Any(i => i.Name == "admin"))
+            {
+                var store = new RoleStore<ApplicationRole>(context);
+                var manager = new RoleManager<ApplicationRole>(store);
+
+                var role = new ApplicationRole() { Name = "admin", Description = "admin rolü" };
+                manager.Create(role);
+
+            }
+
+
+            if (!context.Roles.Any(i => i.Name == "user"))
+            {
+                var store = new RoleStore<ApplicationRole>(context);
+                var manager = new RoleManager<ApplicationRole>(store);
+
+                var role = new ApplicationRole() { Name = "user", Description = "user rolü" }; ;
+                manager.Create(role);
+
+            }
+
+            if (!context.Users.Any(i => i.Name == "kenissha"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+
+                var user = new ApplicationUser() { Name = "Rifat", Surname = "Ozturk", UserName = "Kenisshaa", Email = "rifatozturk061@mail.com" };
+                manager.Create(user, "616161");
+                manager.AddToRole(user.Id, "admin");
+                manager.AddToRole(user.Id, "user");
+
+            }
+
+            if (!context.Users.Any(i => i.Name == "kabisko"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+
+                var user = new ApplicationUser() { Name = "Berat", Surname = "Ozturk", UserName = "Lesh", Email = "beratozturk061@mail.com" };
+                manager.Create(user, "555555");
+                manager.AddToRole(user.Id, "user");
+
+            }
 
 
             base.Seed(context);
         }
     }
+
+
 }

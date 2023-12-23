@@ -9,6 +9,8 @@ namespace OzturkOtoMarketWEBUI.Models
 {
     public class Register
     {
+        public int Id { get; set; } 
+
         [Required]
         [DisplayName("Adınız")]
         public string Name { get; set; }

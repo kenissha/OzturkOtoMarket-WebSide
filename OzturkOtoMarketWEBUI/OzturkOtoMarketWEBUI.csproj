@@ -248,11 +248,15 @@
     <Content Include="Upload\aa.png" />
     <Content Include="Upload\bb.jpg" />
     <Content Include="Upload\cc.jpg" />
+    <Content Include="Upload\dukkan.jpeg" />
+    <Content Include="Upload\reno.png" />
+    <Content Include="Upload\tofas.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup1.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -335,6 +339,7 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
