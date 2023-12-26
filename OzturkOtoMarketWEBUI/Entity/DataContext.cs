@@ -25,8 +25,9 @@ namespace OzturkOtoMarketWEBUI.Entity
         public DbSet<CartLine> CartLines { get; set; }
         public DbSet<Login> Logins { get; set; }    
         public DbSet<Register> Register { get; set; }
-     
-        
+       
+
+
 
 
 

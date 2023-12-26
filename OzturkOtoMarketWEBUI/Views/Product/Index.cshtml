@@ -67,6 +67,11 @@
                 @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
 
                 @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+
+ 
+               <a href="/Home/Details/@item.Id" class="btn btn-info btn-sm">
+    Ürün Detayı
+</a>
             </td>
         </tr>
     }

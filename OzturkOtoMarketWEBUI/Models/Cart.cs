@@ -8,6 +8,7 @@ namespace OzturkOtoMarketWEBUI.Models
 {
     public class Cart
     {
+        
         private List<CartLine> _cardLines = new List<CartLine>();
         public List<CartLine> CartLines
         {
