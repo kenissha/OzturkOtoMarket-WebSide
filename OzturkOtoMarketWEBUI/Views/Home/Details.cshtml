@@ -3,6 +3,8 @@
 
 @{
     ViewBag.Title = "Details";
+    Random random = new Random();
+    int randomSayi = random.Next(75, 100); // 75 dahil, 100 hariç
 }
 
 
@@ -48,8 +50,8 @@
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <span class="badge badge-success">75</span>
+                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                <span class="badge badge-success">@randomSayi</span>
                             </div>
 
                             <div class="col-md-4 mt-3">
@@ -107,7 +109,7 @@
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <p>Orijinal TOFAŞ SLX ön balatadır. Doğan, Kartal, Şahin gibi modellere uygundur.</p>
+                        <p>@Model.Description</p>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <p>Kredi kartı veyahut havale ile ödeme yapabilirsiniz.</p>

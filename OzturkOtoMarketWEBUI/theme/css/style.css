@@ -6,6 +6,9 @@ height: 100%;
 color: white;
 }
 
+body {
+    background-color:antiquewhite;
+}
 
 .col
 {
@@ -43,11 +46,7 @@ main.product-container {
     padding: 0 15px;
   }
 
-  .footer
-  {
-    padding-top: 450px;
-  }
-
+ 
   
  .list-group {
     padding-top: 70px;
